@@ -21,8 +21,8 @@ package 'Complex Drone System' {
 
          requirement RangeReq : PerformanceRequirement {
             doc /* Minimum range requirement */
-            attribute description = "The drone shall achieve a range of at least 1500 nm";
-            attribute targetValue : Real = 1500.0;
+            attribute description = "The drone shall achieve a range of at least 1000 nm";
+            attribute targetValue : Real = 1000.0;
             attribute unit = "nm";
          }
 

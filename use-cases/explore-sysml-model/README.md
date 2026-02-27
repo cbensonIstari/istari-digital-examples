@@ -62,7 +62,7 @@ Running extraction on the Group3 UAS model (`group3_uas_requirements.sysml`, 596
 
 | Requirement | Shall Statement | Target |
 |-------------|----------------|--------|
-| RangeReq | The drone shall achieve a range of at least 1500 nm | 1500.0 nm |
+| RangeReq | The drone shall achieve a range of at least 1000 nm | 1000.0 nm |
 | MaxStructureWeight | The drone structure weight shall not exceed 275 lb | 275.0 lb |
 | CruiseSpeed | The drone shall achieve a cruise speed of at least 100 knots | 100.0 knots |
 | PayloadCapacity | The drone shall carry a payload of at least 125 lb | 125.0 lb |

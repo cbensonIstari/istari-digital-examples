@@ -12,8 +12,8 @@
     "qualified_name": "'Complex Drone System'::Requirements::TopLevelRequirements::RangeReq",
     "parent": "'Complex Drone System'::Requirements::TopLevelRequirements",
     "attributes": {
-      "description": "The drone shall achieve a range of at least 1500 nm",
-      "targetValue": "1500.0",
+      "description": "The drone shall achieve a range of at least 1000 nm",
+      "targetValue": "1000.0",
       "unit": "nm"
     }
   },
