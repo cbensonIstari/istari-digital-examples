@@ -47,6 +47,45 @@ The **inner loop** (SysGit) does the domain-specific parsing — understanding S
 | 14 | **Engineer:** Shares the system with a teammate so they can review the extracted data | Sharing requires access on both the system and its files |
 | 15 | **Engineer:** Done — knows what's in the model and can reference specific requirements by ID in design reviews | Extracted artifacts persist alongside the model; no re-extraction needed unless the .sysml changes |
 
+## Expected Results
+
+Running extraction on the Group3 UAS model (`group3_uas_requirements.sysml`, 596 lines, 22.7 KB) produces:
+
+| Artifact | Size | Contents |
+|----------|------|----------|
+| `output_requirements.json` | 5.5 KB | 11 requirements with target values, units, and parent references |
+| `output_parts.json` | 34.6 KB | 39 parts across 6 subsystems with typed attributes |
+| `requirements_hierarchy.png` | 253 KB | Visual tree: TopLevelRequirements → 10 child requirements |
+| `parts_diagram.png` | 828 KB | Block diagram: Drone → Propulsion, Power, Flight Control, Comms, Payload, Airframe |
+
+### Requirements found
+
+| Requirement | Shall Statement | Target |
+|-------------|----------------|--------|
+| RangeReq | The drone shall achieve a range of at least 1500 nm | 1500.0 nm |
+| MaxStructureWeight | The drone structure weight shall not exceed 275 lb | 275.0 lb |
+| CruiseSpeed | The drone shall achieve a cruise speed of at least 100 knots | 100.0 knots |
+| PayloadCapacity | The drone shall carry a payload of at least 125 lb | 125.0 lb |
+| OperatingTemperature | The drone shall operate in temperatures from -10°C to 45°C | -10.0 to 45.0 °C |
+| FailSafeReq | The drone shall return to home on signal loss | Critical |
+| BatteryMonitoring | The system shall monitor battery voltage and initiate landing at 15% capacity | Critical |
+| PositionAccuracy | The drone shall maintain position accuracy within 2.5m | 2.5 m |
+| VideoTransmissionRange | Video transmission shall work up to 1000m range | 1000.0 m |
+| ControlRange | Control signals shall work up to 1500m range | 1500.0 m |
+
+### Parts found (39 total, 6 subsystems)
+
+| Subsystem | Parts | Example Attributes |
+|-----------|-------|--------------------|
+| Propulsion System | engine, propeller, fuelSystem, starter | displacement: 215cc, maxPower: 23hp, fuelType: JP-8 |
+| Power System | alternator, avionicsBattery, powerDistributionBoard, regulators | outputPower: 500W, capacity: 8000mAh, 6S LiPo |
+| Flight Control System | flightController, gyroscope, accelerometer, magnetometer, barometer, gps, airspeedSensor | Pixhawk 6X, ICM-42688, UBLOX F9P RTK |
+| Communication System | radioReceiver, telemetryModule, satelliteComm, videoTransmitter | RFD900x 433MHz, Iridium 9603, 60km range |
+| Payload System | eoirCamera, thermalCamera, gimbal, gimbalController, lidarSensor, additionalPayloadBay | 30x zoom, 640x512 LWIR, Velodyne Puck Lite |
+| Airframe | centerBody, wing, elevons, winglets, landingGear, avionicsBay | 6061-T6 aluminum, 4.5m wingspan, reflexed airfoil |
+
+See [`example-output/`](example-output/) for the full JSON and PNG files.
+
 ## Try It
 
 Run the notebook: [`explore_sysml_model.ipynb`](explore_sysml_model.ipynb)

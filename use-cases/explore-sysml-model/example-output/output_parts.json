@@ -1,0 +1,1273 @@
+{
+  "'Complex Drone System'::Drone": {
+    "declared_name": "Drone",
+    "attributes": {
+      "totalMass": {
+        "name": "totalMass",
+        "value": null,
+        "code": "attribute totalMass : Real;",
+        "type": "unset"
+      },
+      "maxRange": {
+        "name": "maxRange",
+        "value": null,
+        "code": "attribute maxRange : Real;",
+        "type": "unset"
+      },
+      "cruiseSpeed": {
+        "name": "cruiseSpeed",
+        "value": null,
+        "code": "attribute cruiseSpeed : Real;",
+        "type": "unset"
+      },
+      "maxAltitude": {
+        "name": "maxAltitude",
+        "value": null,
+        "code": "attribute maxAltitude : Real;",
+        "type": "unset"
+      },
+      "uavClass": {
+        "name": "uavClass",
+        "value": "Group 3",
+        "code": "attribute uavClass : String = \"Group 3\";",
+        "type": "string"
+      },
+      "configuration": {
+        "name": "configuration",
+        "value": "Tailless flying wing",
+        "code": "attribute configuration : String = \"Tailless flying wing\";",
+        "type": "string"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Propulsion System'": {
+    "declared_name": "Propulsion System",
+    "attributes": {
+      "totalThrust": {
+        "name": "totalThrust",
+        "value": null,
+        "code": "attribute totalThrust : Real;",
+        "type": "unset"
+      },
+      "totalPowerOutput": {
+        "name": "totalPowerOutput",
+        "value": null,
+        "code": "attribute totalPowerOutput : Real;",
+        "type": "unset"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Propulsion System'::engine": {
+    "declared_name": "engine",
+    "attributes": {
+      "displacement": {
+        "name": "displacement",
+        "value": "215.0",
+        "code": "attribute displacement = 215.0;",
+        "type": "real"
+      },
+      "maxPower": {
+        "name": "maxPower",
+        "value": "23.0",
+        "code": "attribute maxPower = 23.0;",
+        "type": "real"
+      },
+      "maxRPM": {
+        "name": "maxRPM",
+        "value": "6500.0",
+        "code": "attribute maxRPM = 6500.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "12.5",
+        "code": "attribute mass = 12.5;",
+        "type": "real"
+      },
+      "fuelType": {
+        "name": "fuelType",
+        "value": "JP-8 / Jet-A / Diesel",
+        "code": "attribute fuelType = \"JP-8 / Jet-A / Diesel\";",
+        "type": "string"
+      },
+      "sfc": {
+        "name": "sfc",
+        "value": "0.45",
+        "code": "attribute sfc = 0.45;",
+        "type": "real"
+      },
+      "cylinderConfig": {
+        "name": "cylinderConfig",
+        "value": "2-cylinder horizontally opposed",
+        "code": "attribute cylinderConfig = \"2-cylinder horizontally opposed\";",
+        "type": "string"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Propulsion System'::propeller": {
+    "declared_name": "propeller",
+    "attributes": {
+      "diameter": {
+        "name": "diameter",
+        "value": "32.0",
+        "code": "attribute diameter = 32.0;",
+        "type": "real"
+      },
+      "pitch": {
+        "name": "pitch",
+        "value": "14.0",
+        "code": "attribute pitch = 14.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "1.2",
+        "code": "attribute mass = 1.2;",
+        "type": "real"
+      },
+      "maxThrust": {
+        "name": "maxThrust",
+        "value": "400.0",
+        "code": "attribute maxThrust = 400.0;",
+        "type": "real"
+      },
+      "material": {
+        "name": "material",
+        "value": "Carbon Fiber",
+        "code": "attribute material = \"Carbon Fiber\";",
+        "type": "string"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Propulsion System'::fuelSystem": {
+    "declared_name": "fuelSystem",
+    "attributes": {
+      "fuelCapacity": {
+        "name": "fuelCapacity",
+        "value": "18.0",
+        "code": "attribute fuelCapacity : Real = 18.0;",
+        "type": "real"
+      },
+      "fuelMass": {
+        "name": "fuelMass",
+        "value": "126.0",
+        "code": "attribute fuelMass : Real = 126.0;",
+        "type": "real"
+      },
+      "tankMaterial": {
+        "name": "tankMaterial",
+        "value": "Aluminum",
+        "code": "attribute tankMaterial : String = \"Aluminum\";",
+        "type": "string"
+      },
+      "tankMass": {
+        "name": "tankMass",
+        "value": "8.0",
+        "code": "attribute tankMass : Real = 8.0;",
+        "type": "real"
+      },
+      "fuelPumpType": {
+        "name": "fuelPumpType",
+        "value": "Mechanical engine-driven",
+        "code": "attribute fuelPumpType : String = \"Mechanical engine-driven\";",
+        "type": "string"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Propulsion System'::starter": {
+    "declared_name": "starter",
+    "attributes": {
+      "type": {
+        "name": "type",
+        "value": "Electric starter",
+        "code": "attribute type : String = \"Electric starter\";",
+        "type": "string"
+      },
+      "voltage": {
+        "name": "voltage",
+        "value": "12.0",
+        "code": "attribute voltage : Real = 12.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "1.5",
+        "code": "attribute mass : Real = 1.5;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Power System'": {
+    "declared_name": "Power System",
+    "attributes": {
+      "systemVoltage": {
+        "name": "systemVoltage",
+        "value": null,
+        "code": "attribute systemVoltage : Real;",
+        "type": "unset"
+      },
+      "estimatedRange": {
+        "name": "estimatedRange",
+        "value": null,
+        "code": "attribute estimatedRange : Real;",
+        "type": "unset"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Power System'::alternator": {
+    "declared_name": "alternator",
+    "attributes": {
+      "outputPower": {
+        "name": "outputPower",
+        "value": "500.0",
+        "code": "attribute outputPower : Real = 500.0;",
+        "type": "real"
+      },
+      "voltage": {
+        "name": "voltage",
+        "value": "28.0",
+        "code": "attribute voltage : Real = 28.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "3.5",
+        "code": "attribute mass : Real = 3.5;",
+        "type": "real"
+      },
+      "efficiency": {
+        "name": "efficiency",
+        "value": "85.0",
+        "code": "attribute efficiency : Real = 85.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Power System'::avionicsBattery": {
+    "declared_name": "avionicsBattery",
+    "attributes": {
+      "capacity": {
+        "name": "capacity",
+        "value": "8000.0",
+        "code": "attribute capacity = 8000.0;",
+        "type": "real"
+      },
+      "voltage": {
+        "name": "voltage",
+        "value": "24.0",
+        "code": "attribute voltage = 24.0;",
+        "type": "real"
+      },
+      "cellCount": {
+        "name": "cellCount",
+        "value": "6",
+        "code": "attribute cellCount = 6;",
+        "type": "integer"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "4.5",
+        "code": "attribute mass = 4.5;",
+        "type": "real"
+      },
+      "dischargeRate": {
+        "name": "dischargeRate",
+        "value": "10.0",
+        "code": "attribute dischargeRate = 10.0;",
+        "type": "real"
+      },
+      "maxContinuousCurrent": {
+        "name": "maxContinuousCurrent",
+        "value": "80.0",
+        "code": "attribute maxContinuousCurrent = 80.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Power System'::powerDistributionBoard": {
+    "declared_name": "powerDistributionBoard",
+    "attributes": {
+      "maxCurrent": {
+        "name": "maxCurrent",
+        "value": "40.0",
+        "code": "attribute maxCurrent : Real = 40.0;",
+        "type": "real"
+      },
+      "voltage": {
+        "name": "voltage",
+        "value": "28.0",
+        "code": "attribute voltage : Real = 28.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "0.6",
+        "code": "attribute mass : Real = 0.6;",
+        "type": "real"
+      },
+      "numberOfOutputs": {
+        "name": "numberOfOutputs",
+        "value": "12",
+        "code": "attribute numberOfOutputs : Integer = 12;",
+        "type": "integer"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Power System'::voltageRegulator5V": {
+    "declared_name": "voltageRegulator5V",
+    "attributes": {
+      "inputVoltage": {
+        "name": "inputVoltage",
+        "value": "28.0",
+        "code": "attribute inputVoltage : Real = 28.0;",
+        "type": "real"
+      },
+      "outputVoltage": {
+        "name": "outputVoltage",
+        "value": "5.0",
+        "code": "attribute outputVoltage : Real = 5.0;",
+        "type": "real"
+      },
+      "maxCurrent": {
+        "name": "maxCurrent",
+        "value": "10.0",
+        "code": "attribute maxCurrent : Real = 10.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "0.3",
+        "code": "attribute mass : Real = 0.3;",
+        "type": "real"
+      },
+      "efficiency": {
+        "name": "efficiency",
+        "value": "92.0",
+        "code": "attribute efficiency : Real = 92.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Power System'::voltageRegulator12V": {
+    "declared_name": "voltageRegulator12V",
+    "attributes": {
+      "inputVoltage": {
+        "name": "inputVoltage",
+        "value": "28.0",
+        "code": "attribute inputVoltage : Real = 28.0;",
+        "type": "real"
+      },
+      "outputVoltage": {
+        "name": "outputVoltage",
+        "value": "12.0",
+        "code": "attribute outputVoltage : Real = 12.0;",
+        "type": "real"
+      },
+      "maxCurrent": {
+        "name": "maxCurrent",
+        "value": "8.0",
+        "code": "attribute maxCurrent : Real = 8.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "0.4",
+        "code": "attribute mass : Real = 0.4;",
+        "type": "real"
+      },
+      "efficiency": {
+        "name": "efficiency",
+        "value": "90.0",
+        "code": "attribute efficiency : Real = 90.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Flight Control System'": {
+    "declared_name": "Flight Control System",
+    "attributes": {}
+  },
+  "'Complex Drone System'::Drone::'Flight Control System'::flightController": {
+    "declared_name": "flightController",
+    "attributes": {
+      "processor": {
+        "name": "processor",
+        "value": "Pixhawk 6X (STM32H7)",
+        "code": "attribute processor = \"Pixhawk 6X (STM32H7)\";",
+        "type": "string"
+      },
+      "clockSpeed": {
+        "name": "clockSpeed",
+        "value": "480.0",
+        "code": "attribute clockSpeed = 480.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "0.35",
+        "code": "attribute mass = 0.35;",
+        "type": "real"
+      },
+      "voltage": {
+        "name": "voltage",
+        "value": "5.0",
+        "code": "attribute voltage = 5.0;",
+        "type": "real"
+      },
+      "imuUpdateRate": {
+        "name": "imuUpdateRate",
+        "value": "8000.0",
+        "code": "attribute imuUpdateRate = 8000.0;",
+        "type": "real"
+      },
+      "numberOfPorts": {
+        "name": "numberOfPorts",
+        "value": "16",
+        "code": "attribute numberOfPorts = 16;",
+        "type": "integer"
+      },
+      "firmware": {
+        "name": "firmware",
+        "value": "ArduPlane",
+        "code": "attribute firmware = \"ArduPlane\";",
+        "type": "string"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Flight Control System'::gyroscope": {
+    "declared_name": "gyroscope",
+    "attributes": {
+      "type": {
+        "name": "type",
+        "value": "ICM-42688",
+        "code": "attribute type = \"ICM-42688\";",
+        "type": "string"
+      },
+      "updateRate": {
+        "name": "updateRate",
+        "value": "8000.0",
+        "code": "attribute updateRate = 8000.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "0.01",
+        "code": "attribute mass = 0.01;",
+        "type": "real"
+      },
+      "accuracy": {
+        "name": "accuracy",
+        "value": "0.01",
+        "code": "attribute accuracy = 0.01;",
+        "type": "real"
+      },
+      "range": {
+        "name": "range",
+        "value": "2000.0",
+        "code": "attribute range = 2000.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Flight Control System'::accelerometer": {
+    "declared_name": "accelerometer",
+    "attributes": {
+      "type": {
+        "name": "type",
+        "value": "ICM-42688",
+        "code": "attribute type = \"ICM-42688\";",
+        "type": "string"
+      },
+      "updateRate": {
+        "name": "updateRate",
+        "value": "8000.0",
+        "code": "attribute updateRate = 8000.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "0.01",
+        "code": "attribute mass = 0.01;",
+        "type": "real"
+      },
+      "accuracy": {
+        "name": "accuracy",
+        "value": "0.02",
+        "code": "attribute accuracy = 0.02;",
+        "type": "real"
+      },
+      "range": {
+        "name": "range",
+        "value": "16.0",
+        "code": "attribute range = 16.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Flight Control System'::magnetometer": {
+    "declared_name": "magnetometer",
+    "attributes": {
+      "type": {
+        "name": "type",
+        "value": "RM3100",
+        "code": "attribute type = \"RM3100\";",
+        "type": "string"
+      },
+      "updateRate": {
+        "name": "updateRate",
+        "value": "200.0",
+        "code": "attribute updateRate = 200.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "0.02",
+        "code": "attribute mass = 0.02;",
+        "type": "real"
+      },
+      "accuracy": {
+        "name": "accuracy",
+        "value": "0.3",
+        "code": "attribute accuracy = 0.3;",
+        "type": "real"
+      },
+      "range": {
+        "name": "range",
+        "value": "8.0",
+        "code": "attribute range = 8.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Flight Control System'::barometer": {
+    "declared_name": "barometer",
+    "attributes": {
+      "type": {
+        "name": "type",
+        "value": "MS5611",
+        "code": "attribute type : String = \"MS5611\";",
+        "type": "string"
+      },
+      "updateRate": {
+        "name": "updateRate",
+        "value": "100.0",
+        "code": "attribute updateRate : Real = 100.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "0.02",
+        "code": "attribute mass : Real = 0.02;",
+        "type": "real"
+      },
+      "accuracy": {
+        "name": "accuracy",
+        "value": "1.0",
+        "code": "attribute accuracy : Real = 1.0;",
+        "type": "real"
+      },
+      "range": {
+        "name": "range",
+        "value": "15000.0",
+        "code": "attribute range : Real = 15000.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Flight Control System'::gps": {
+    "declared_name": "gps",
+    "attributes": {
+      "type": {
+        "name": "type",
+        "value": "UBLOX F9P RTK",
+        "code": "attribute type = \"UBLOX F9P RTK\";",
+        "type": "string"
+      },
+      "updateRate": {
+        "name": "updateRate",
+        "value": "10.0",
+        "code": "attribute updateRate = 10.0;",
+        "type": "real"
+      },
+      "accuracy": {
+        "name": "accuracy",
+        "value": "0.01",
+        "code": "attribute accuracy = 0.01;",
+        "type": "real"
+      },
+      "channels": {
+        "name": "channels",
+        "value": "184",
+        "code": "attribute channels = 184;",
+        "type": "integer"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "0.15",
+        "code": "attribute mass = 0.15;",
+        "type": "real"
+      },
+      "voltage": {
+        "name": "voltage",
+        "value": "5.0",
+        "code": "attribute voltage = 5.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Flight Control System'::airspeedSensor": {
+    "declared_name": "airspeedSensor",
+    "attributes": {
+      "type": {
+        "name": "type",
+        "value": "MS4525DO",
+        "code": "attribute type : String = \"MS4525DO\";",
+        "type": "string"
+      },
+      "updateRate": {
+        "name": "updateRate",
+        "value": "100.0",
+        "code": "attribute updateRate : Real = 100.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "0.05",
+        "code": "attribute mass : Real = 0.05;",
+        "type": "real"
+      },
+      "accuracy": {
+        "name": "accuracy",
+        "value": "0.5",
+        "code": "attribute accuracy : Real = 0.5;",
+        "type": "real"
+      },
+      "maxSpeed": {
+        "name": "maxSpeed",
+        "value": "100.0",
+        "code": "attribute maxSpeed : Real = 100.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Communication System'": {
+    "declared_name": "Communication System",
+    "attributes": {}
+  },
+  "'Complex Drone System'::Drone::'Communication System'::radioReceiver": {
+    "declared_name": "radioReceiver",
+    "attributes": {
+      "frequency": {
+        "name": "frequency",
+        "value": "0.433",
+        "code": "attribute frequency = 0.433;",
+        "type": "real"
+      },
+      "channels": {
+        "name": "channels",
+        "value": "16",
+        "code": "attribute channels = 16;",
+        "type": "integer"
+      },
+      "protocol": {
+        "name": "protocol",
+        "value": "RFD900x",
+        "code": "attribute protocol = \"RFD900x\";",
+        "type": "string"
+      },
+      "range": {
+        "name": "range",
+        "value": "60000.0",
+        "code": "attribute range = 60000.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "0.25",
+        "code": "attribute mass = 0.25;",
+        "type": "real"
+      },
+      "voltage": {
+        "name": "voltage",
+        "value": "5.0",
+        "code": "attribute voltage = 5.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Communication System'::telemetryModule": {
+    "declared_name": "telemetryModule",
+    "attributes": {
+      "frequency": {
+        "name": "frequency",
+        "value": "0.900",
+        "code": "attribute frequency = 0.900;",
+        "type": "real"
+      },
+      "dataRate": {
+        "name": "dataRate",
+        "value": "250.0",
+        "code": "attribute dataRate = 250.0;",
+        "type": "real"
+      },
+      "range": {
+        "name": "range",
+        "value": "80000.0",
+        "code": "attribute range = 80000.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "0.3",
+        "code": "attribute mass = 0.3;",
+        "type": "real"
+      },
+      "voltage": {
+        "name": "voltage",
+        "value": "5.0",
+        "code": "attribute voltage = 5.0;",
+        "type": "real"
+      },
+      "powerOutput": {
+        "name": "powerOutput",
+        "value": "1000.0",
+        "code": "attribute powerOutput = 1000.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Communication System'::satelliteComm": {
+    "declared_name": "satelliteComm",
+    "attributes": {
+      "type": {
+        "name": "type",
+        "value": "Iridium 9603",
+        "code": "attribute type : String = \"Iridium 9603\";",
+        "type": "string"
+      },
+      "dataRate": {
+        "name": "dataRate",
+        "value": "2.4",
+        "code": "attribute dataRate : Real = 2.4;",
+        "type": "real"
+      },
+      "range": {
+        "name": "range",
+        "value": "999999.0",
+        "code": "attribute range : Real = 999999.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "0.4",
+        "code": "attribute mass : Real = 0.4;",
+        "type": "real"
+      },
+      "voltage": {
+        "name": "voltage",
+        "value": "5.0",
+        "code": "attribute voltage : Real = 5.0;",
+        "type": "real"
+      },
+      "powerConsumption": {
+        "name": "powerConsumption",
+        "value": "1.4",
+        "code": "attribute powerConsumption : Real = 1.4;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Communication System'::videoTransmitter": {
+    "declared_name": "videoTransmitter",
+    "attributes": {
+      "frequency": {
+        "name": "frequency",
+        "value": "1.3",
+        "code": "attribute frequency = 1.3;",
+        "type": "real"
+      },
+      "channels": {
+        "name": "channels",
+        "value": "8",
+        "code": "attribute channels = 8;",
+        "type": "integer"
+      },
+      "powerOutput": {
+        "name": "powerOutput",
+        "value": "2000.0",
+        "code": "attribute powerOutput = 2000.0;",
+        "type": "real"
+      },
+      "range": {
+        "name": "range",
+        "value": "50000.0",
+        "code": "attribute range = 50000.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "0.6",
+        "code": "attribute mass = 0.6;",
+        "type": "real"
+      },
+      "voltage": {
+        "name": "voltage",
+        "value": "12.0",
+        "code": "attribute voltage = 12.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Payload System'": {
+    "declared_name": "Payload System",
+    "attributes": {}
+  },
+  "'Complex Drone System'::Drone::'Payload System'::eoirCamera": {
+    "declared_name": "eoirCamera",
+    "attributes": {
+      "resolution": {
+        "name": "resolution",
+        "value": "1080p@30fps",
+        "code": "attribute resolution = \"1080p@30fps\";",
+        "type": "string"
+      },
+      "frameRate": {
+        "name": "frameRate",
+        "value": "30.0",
+        "code": "attribute frameRate = 30.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "5.0",
+        "code": "attribute mass = 5.0;",
+        "type": "real"
+      },
+      "fov": {
+        "name": "fov",
+        "value": "60.0",
+        "code": "attribute fov = 60.0;",
+        "type": "real"
+      },
+      "sensor": {
+        "name": "sensor",
+        "value": "1-inch CMOS with 30x optical zoom",
+        "code": "attribute sensor = \"1-inch CMOS with 30x optical zoom\";",
+        "type": "string"
+      },
+      "voltage": {
+        "name": "voltage",
+        "value": "12.0",
+        "code": "attribute voltage = 12.0;",
+        "type": "real"
+      },
+      "powerConsumption": {
+        "name": "powerConsumption",
+        "value": "15.0",
+        "code": "attribute powerConsumption = 15.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Payload System'::thermalCamera": {
+    "declared_name": "thermalCamera",
+    "attributes": {
+      "resolution": {
+        "name": "resolution",
+        "value": "640x512",
+        "code": "attribute resolution : String = \"640x512\";",
+        "type": "string"
+      },
+      "frameRate": {
+        "name": "frameRate",
+        "value": "30.0",
+        "code": "attribute frameRate : Real = 30.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "3.5",
+        "code": "attribute mass : Real = 3.5;",
+        "type": "real"
+      },
+      "fov": {
+        "name": "fov",
+        "value": "25.0",
+        "code": "attribute fov : Real = 25.0;",
+        "type": "real"
+      },
+      "sensor": {
+        "name": "sensor",
+        "value": "LWIR Uncooled VOx",
+        "code": "attribute sensor : String = \"LWIR Uncooled VOx\";",
+        "type": "string"
+      },
+      "voltage": {
+        "name": "voltage",
+        "value": "12.0",
+        "code": "attribute voltage : Real = 12.0;",
+        "type": "real"
+      },
+      "powerConsumption": {
+        "name": "powerConsumption",
+        "value": "8.0",
+        "code": "attribute powerConsumption : Real = 8.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Payload System'::gimbal": {
+    "declared_name": "gimbal",
+    "attributes": {
+      "axes": {
+        "name": "axes",
+        "value": "3",
+        "code": "attribute axes = 3;",
+        "type": "integer"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "8.0",
+        "code": "attribute mass = 8.0;",
+        "type": "real"
+      },
+      "maxPayload": {
+        "name": "maxPayload",
+        "value": "15.0",
+        "code": "attribute maxPayload = 15.0;",
+        "type": "real"
+      },
+      "stabilizationAccuracy": {
+        "name": "stabilizationAccuracy",
+        "value": "0.005",
+        "code": "attribute stabilizationAccuracy = 0.005;",
+        "type": "real"
+      },
+      "material": {
+        "name": "material",
+        "value": "Machined Aluminum",
+        "code": "attribute material = \"Machined Aluminum\";",
+        "type": "string"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Payload System'::gimbalController": {
+    "declared_name": "gimbalController",
+    "attributes": {
+      "processor": {
+        "name": "processor",
+        "value": "STM32H7",
+        "code": "attribute processor : String = \"STM32H7\";",
+        "type": "string"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "0.3",
+        "code": "attribute mass : Real = 0.3;",
+        "type": "real"
+      },
+      "voltage": {
+        "name": "voltage",
+        "value": "12.0",
+        "code": "attribute voltage : Real = 12.0;",
+        "type": "real"
+      },
+      "updateRate": {
+        "name": "updateRate",
+        "value": "2000.0",
+        "code": "attribute updateRate : Real = 2000.0;",
+        "type": "real"
+      },
+      "controlAlgorithm": {
+        "name": "controlAlgorithm",
+        "value": "Advanced PID with IMU fusion",
+        "code": "attribute controlAlgorithm : String = \"Advanced PID with IMU fusion\";",
+        "type": "string"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Payload System'::lidarSensor": {
+    "declared_name": "lidarSensor",
+    "attributes": {
+      "type": {
+        "name": "type",
+        "value": "Velodyne Puck Lite",
+        "code": "attribute type : String = \"Velodyne Puck Lite\";",
+        "type": "string"
+      },
+      "range": {
+        "name": "range",
+        "value": "100.0",
+        "code": "attribute range : Real = 100.0;",
+        "type": "real"
+      },
+      "accuracy": {
+        "name": "accuracy",
+        "value": "0.03",
+        "code": "attribute accuracy : Real = 0.03;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "1.2",
+        "code": "attribute mass : Real = 1.2;",
+        "type": "real"
+      },
+      "voltage": {
+        "name": "voltage",
+        "value": "12.0",
+        "code": "attribute voltage : Real = 12.0;",
+        "type": "real"
+      },
+      "scanRate": {
+        "name": "scanRate",
+        "value": "10.0",
+        "code": "attribute scanRate : Real = 10.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::'Payload System'::additionalPayloadBay": {
+    "declared_name": "additionalPayloadBay",
+    "attributes": {
+      "availableCapacity": {
+        "name": "availableCapacity",
+        "value": "82.0",
+        "code": "attribute availableCapacity : Real = 82.0;",
+        "type": "real"
+      },
+      "volumeCapacity": {
+        "name": "volumeCapacity",
+        "value": "3000.0",
+        "code": "attribute volumeCapacity : Real = 3000.0;",
+        "type": "real"
+      },
+      "powerAvailable": {
+        "name": "powerAvailable",
+        "value": "500.0",
+        "code": "attribute powerAvailable : Real = 500.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::Airframe": {
+    "declared_name": "Airframe",
+    "attributes": {}
+  },
+  "'Complex Drone System'::Drone::Airframe::centerBody": {
+    "declared_name": "centerBody",
+    "attributes": {
+      "material": {
+        "name": "material",
+        "value": "Aluminum Alloy (6061-T6)",
+        "code": "attribute material = \"Aluminum Alloy (6061-T6)\";",
+        "type": "string"
+      },
+      "length": {
+        "name": "length",
+        "value": "2500.0",
+        "code": "attribute length = 2500.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "45.0",
+        "code": "attribute mass = 45.0;",
+        "type": "real"
+      },
+      "width": {
+        "name": "width",
+        "value": "800.0",
+        "code": "attribute width = 800.0;",
+        "type": "real"
+      },
+      "maxPayloadCapacity": {
+        "name": "maxPayloadCapacity",
+        "value": "100.0",
+        "code": "attribute maxPayloadCapacity = 100.0;",
+        "type": "real"
+      },
+      "construction": {
+        "name": "construction",
+        "value": "Semi-monocoque aluminum structure",
+        "code": "attribute construction : String = \"Semi-monocoque aluminum structure\";",
+        "type": "string"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::Airframe::wing": {
+    "declared_name": "wing",
+    "attributes": {
+      "material": {
+        "name": "material",
+        "value": "Aluminum Alloy with riveted ribs",
+        "code": "attribute material : String = \"Aluminum Alloy with riveted ribs\";",
+        "type": "string"
+      },
+      "wingspan": {
+        "name": "wingspan",
+        "value": "4500.0",
+        "code": "attribute wingspan : Real = 4500.0;",
+        "type": "real"
+      },
+      "area": {
+        "name": "area",
+        "value": "4.0",
+        "code": "attribute area : Real = 4.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "42.0",
+        "code": "attribute mass : Real = 42.0;",
+        "type": "real"
+      },
+      "airfoil": {
+        "name": "airfoil",
+        "value": "Reflexed airfoil for tailless stability",
+        "code": "attribute airfoil : String = \"Reflexed airfoil for tailless stability\";",
+        "type": "string"
+      },
+      "construction": {
+        "name": "construction",
+        "value": "Aluminum skin with internal ribs",
+        "code": "attribute construction : String = \"Aluminum skin with internal ribs\";",
+        "type": "string"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::Airframe::elevons": {
+    "declared_name": "elevons",
+    "attributes": {
+      "material": {
+        "name": "material",
+        "value": "Aluminum Alloy",
+        "code": "attribute material : String = \"Aluminum Alloy\";",
+        "type": "string"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "6.0",
+        "code": "attribute mass : Real = 6.0;",
+        "type": "real"
+      },
+      "numberOfSurfaces": {
+        "name": "numberOfSurfaces",
+        "value": "4",
+        "code": "attribute numberOfSurfaces : Integer = 4;",
+        "type": "integer"
+      },
+      "controlAuthority": {
+        "name": "controlAuthority",
+        "value": "Pitch and roll control",
+        "code": "attribute controlAuthority : String = \"Pitch and roll control\";",
+        "type": "string"
+      },
+      "actuatorType": {
+        "name": "actuatorType",
+        "value": "Digital servo",
+        "code": "attribute actuatorType : String = \"Digital servo\";",
+        "type": "string"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::Airframe::winglets": {
+    "declared_name": "winglets",
+    "attributes": {
+      "material": {
+        "name": "material",
+        "value": "Aluminum Alloy",
+        "code": "attribute material : String = \"Aluminum Alloy\";",
+        "type": "string"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "3.0",
+        "code": "attribute mass : Real = 3.0;",
+        "type": "real"
+      },
+      "height": {
+        "name": "height",
+        "value": "300.0",
+        "code": "attribute height : Real = 300.0;",
+        "type": "real"
+      },
+      "cant": {
+        "name": "cant",
+        "value": "10.0",
+        "code": "attribute cant : Real = 10.0;",
+        "type": "real"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::Airframe::landingGear": {
+    "declared_name": "landingGear",
+    "attributes": {
+      "material": {
+        "name": "material",
+        "value": "Aluminum Alloy",
+        "code": "attribute material : String = \"Aluminum Alloy\";",
+        "type": "string"
+      },
+      "type": {
+        "name": "type",
+        "value": "Fixed tricycle",
+        "code": "attribute type : String = \"Fixed tricycle\";",
+        "type": "string"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "8.0",
+        "code": "attribute mass : Real = 8.0;",
+        "type": "real"
+      },
+      "shockAbsorption": {
+        "name": "shockAbsorption",
+        "value": "Spring steel with foam padding",
+        "code": "attribute shockAbsorption : String = \"Spring steel with foam padding\";",
+        "type": "string"
+      },
+      "expendable": {
+        "name": "expendable",
+        "value": "True",
+        "code": "attribute expendable : Boolean = true;",
+        "type": "boolean"
+      }
+    }
+  },
+  "'Complex Drone System'::Drone::Airframe::avionicsBay": {
+    "declared_name": "avionicsBay",
+    "attributes": {
+      "material": {
+        "name": "material",
+        "value": "Aluminum with thermal insulation",
+        "code": "attribute material : String = \"Aluminum with thermal insulation\";",
+        "type": "string"
+      },
+      "volume": {
+        "name": "volume",
+        "value": "1200.0",
+        "code": "attribute volume : Real = 1200.0;",
+        "type": "real"
+      },
+      "mass": {
+        "name": "mass",
+        "value": "7.0",
+        "code": "attribute mass : Real = 7.0;",
+        "type": "real"
+      },
+      "environmentalControl": {
+        "name": "environmentalControl",
+        "value": "Passive thermal management",
+        "code": "attribute environmentalControl : String = \"Passive thermal management\";",
+        "type": "string"
+      },
+      "construction": {
+        "name": "construction",
+        "value": "Welded aluminum box structure",
+        "code": "attribute construction : String = \"Welded aluminum box structure\";",
+        "type": "string"
+      }
+    }
+  }
+}
