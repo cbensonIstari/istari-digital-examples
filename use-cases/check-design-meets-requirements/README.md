@@ -59,8 +59,8 @@ Everyone works in parallel in their preferred tool. Istari stores everything in 
 | Tool | Role |
 |------|------|
 | **Istari Platform** | Outer loop — stores all three models, runs extractions, hosts artifacts, connects everything |
-| **SysGit** (`@istari:extract_sysmlv2`) | Inner loop 1 — parses SysML v2 to extract requirements and architecture as structured JSON |
-| **nTopology** (`@ntop:run_model` via `ntopcl`) | Inner loop 2 — runs parametric wing model, produces aerodeck metrics and rendered views |
+| **SysGit** (`@istari:extract_sysmlv2`) | Inner loops 1 & 2 — parses SysML v2 to extract requirements and architecture as structured JSON |
+| **nTopology** (`@ntop:run_model` via `ntopcl`) | Inner loop 3 — runs parametric wing model, produces aerodeck metrics and rendered views |
 | **Compliance checks** (Python, in this repo) | Automated scripts that compare requirements ↔ architecture ↔ CAD and produce a pass/fail report |
 
 ## Milestones
@@ -117,7 +117,7 @@ Present a clean compliance report — all checks pass. This is what you'd bring 
 | Range | RangeReq | ≥ 1,500 nm | 2,312 nm | ✅ PASS |
 | Cruise Speed | CruiseSpeed | ≥ 100 kts | 175 kts | ✅ PASS |
 | Structure Weight | MaxStructureWeight | ≤ 275 lb | 321.8 lb | ❌ FAIL |
-| Architecture Mass Roll-up | MaxStructureWeight | ≤ 275 lb | ~145 lb (components) | ⚠️ WARN (incomplete) |
+| Architecture Mass Roll-up | MaxStructureWeight | ≤ 275 lb | 155.7 lb (components) | ✅ PASS |
 
 ### After updating requirement (275 → 325 lb)
 
@@ -126,24 +126,45 @@ Present a clean compliance report — all checks pass. This is what you'd bring 
 | Range | RangeReq | ≥ 1,500 nm | 2,312 nm | ✅ PASS |
 | Cruise Speed | CruiseSpeed | ≥ 100 kts | 175 kts | ✅ PASS |
 | Structure Weight | MaxStructureWeight | ≤ 325 lb | 321.8 lb | ✅ PASS |
+| Architecture Mass Roll-up | MaxStructureWeight | ≤ 325 lb | 155.7 lb | ✅ PASS |
 
-## Check Scripts
+## Check Script
 
-The compliance checks live in [`checks/`](checks/) and can be used standalone or imported:
+The compliance checks live in [`compliance_checks.py`](compliance_checks.py) and can be imported from the notebook:
 
-```bash
-# Run from command line
-python checks/check_reqs_vs_cad.py \
-  --reqs example-output/output_requirements.json \
-  --metrics example-output/grp3-uas_v6_aerodeck_metrics.json
+```python
+from compliance_checks import run_all_checks, format_report
+
+results = run_all_checks(reqs_data, parts_data, metrics_data)
+print(format_report(results))
 
 # Output:
-# RangeReq:           PASS  (2312.0 nm ≥ 1500.0 nm)
-# CruiseSpeed:        PASS  (175 kts ≥ 100.0 kts)
-# MaxStructureWeight: FAIL  (321.75 lb > 275.0 lb)
+#   Range                          PASS  (2312.0 nm >= 1500.0 nm, margin: +54.1%)
+#   Structure Weight               FAIL  (321.75 lb <= 275.0 lb, margin: -17.0%)
+#   Cruise Speed                   PASS  (175 kts >= 100.0 kts, margin: +75.0%)
+#   Architecture Mass Roll-up      PASS  (155.7 lb <= 275.0 lb, margin: +43.4%)
 ```
 
-See [`example-input/`](example-input/) for the source files and [`example-output/`](example-output/) for a complete compliance report.
+## Example Files
+
+### [`example-input/`](example-input/) — what goes in
+
+| File | Milestone | Description |
+|------|-----------|-------------|
+| `group3_uas_requirements.sysml` | 1 | The original SysML source file (requirements + architecture) |
+| `v4_input.json` | 1 | nTop wing parameters (sweep, span, panel break) |
+
+### [`example-output/`](example-output/) — what comes out
+
+| File | Milestone | Description |
+|------|-----------|-------------|
+| `output_requirements.json` | 1 | Extracted requirements (11 total, with target values) |
+| `output_parts.json` | 1 | Extracted architecture (39 parts across 6 subsystems) |
+| `grp3-uas_v6_aerodeck_metrics.json` | 1 | nTop aerodeck results (weight, range, speed, stability) |
+| `compliance_report_initial.md` | 2 | First compliance check — **weight fails** (321.8 lb vs 275 lb) |
+| `group3_uas_requirements_updated.sysml` | 3 | Updated SysML with relaxed weight budget (275 → 325 lb) |
+| `output_requirements_updated.json` | 3 | Re-extracted requirements showing the 325 lb target |
+| `compliance_report_final.md` | 4 | Final compliance check — **all green** |
 
 ## Try It
 

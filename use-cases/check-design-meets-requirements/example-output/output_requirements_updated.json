@@ -1,0 +1,127 @@
+{
+  "'Complex Drone System'::Requirements::TopLevelRequirements": {
+    "id": null,
+    "name": "TopLevelRequirements",
+    "description": "Top-level drone system requirements",
+    "qualified_name": "'Complex Drone System'::Requirements::TopLevelRequirements"
+  },
+  "'Complex Drone System'::Requirements::TopLevelRequirements::RangeReq": {
+    "id": null,
+    "name": "RangeReq",
+    "description": "Minimum range requirement",
+    "qualified_name": "'Complex Drone System'::Requirements::TopLevelRequirements::RangeReq",
+    "parent": "'Complex Drone System'::Requirements::TopLevelRequirements",
+    "attributes": {
+      "description": "The drone shall achieve a range of at least 1500 nm",
+      "targetValue": "1500.0",
+      "unit": "nm"
+    }
+  },
+  "'Complex Drone System'::Requirements::TopLevelRequirements::MaxStructureWeight": {
+    "id": null,
+    "name": "MaxStructureWeight",
+    "description": "Maximum structure weight constraint (MTOW 450 lb minus 125 lb payload)",
+    "qualified_name": "'Complex Drone System'::Requirements::TopLevelRequirements::MaxStructureWeight",
+    "parent": "'Complex Drone System'::Requirements::TopLevelRequirements",
+    "attributes": {
+      "description": "The drone structure weight shall not exceed 325 lb",
+      "maxValue": "325.0",
+      "unit": "lb"
+    }
+  },
+  "'Complex Drone System'::Requirements::TopLevelRequirements::CruiseSpeed": {
+    "id": null,
+    "name": "CruiseSpeed",
+    "description": "Cruise speed for efficient long-range flight",
+    "qualified_name": "'Complex Drone System'::Requirements::TopLevelRequirements::CruiseSpeed",
+    "parent": "'Complex Drone System'::Requirements::TopLevelRequirements",
+    "attributes": {
+      "description": "The drone shall achieve a cruise speed of at least 100 knots",
+      "minValue": "100.0",
+      "unit": "knots"
+    }
+  },
+  "'Complex Drone System'::Requirements::TopLevelRequirements::PayloadCapacity": {
+    "id": null,
+    "name": "PayloadCapacity",
+    "description": "Payload carrying capacity",
+    "qualified_name": "'Complex Drone System'::Requirements::TopLevelRequirements::PayloadCapacity",
+    "parent": "'Complex Drone System'::Requirements::TopLevelRequirements",
+    "attributes": {
+      "description": "The drone shall carry a payload of at least 125 lb",
+      "minValue": "125.0",
+      "unit": "lb"
+    }
+  },
+  "'Complex Drone System'::Requirements::TopLevelRequirements::OperatingTemperature": {
+    "id": null,
+    "name": "OperatingTemperature",
+    "description": "Operating temperature range",
+    "qualified_name": "'Complex Drone System'::Requirements::TopLevelRequirements::OperatingTemperature",
+    "parent": "'Complex Drone System'::Requirements::TopLevelRequirements",
+    "attributes": {
+      "description": "The drone shall operate in temperatures from -10\u00b0C to 45\u00b0C",
+      "minTemp": "-10.0",
+      "maxTemp": "45.0",
+      "unit": "\u00b0C"
+    }
+  },
+  "'Complex Drone System'::Requirements::TopLevelRequirements::FailSafeReq": {
+    "id": null,
+    "name": "FailSafeReq",
+    "description": "Fail-safe system requirement",
+    "qualified_name": "'Complex Drone System'::Requirements::TopLevelRequirements::FailSafeReq",
+    "parent": "'Complex Drone System'::Requirements::TopLevelRequirements",
+    "attributes": {
+      "description": "The drone shall return to home on signal loss",
+      "priority": "Critical"
+    }
+  },
+  "'Complex Drone System'::Requirements::TopLevelRequirements::BatteryMonitoring": {
+    "id": null,
+    "name": "BatteryMonitoring",
+    "description": "Battery monitoring requirement",
+    "qualified_name": "'Complex Drone System'::Requirements::TopLevelRequirements::BatteryMonitoring",
+    "parent": "'Complex Drone System'::Requirements::TopLevelRequirements",
+    "attributes": {
+      "description": "The system shall monitor battery voltage and initiate landing at 15% capacity",
+      "priority": "Critical"
+    }
+  },
+  "'Complex Drone System'::Requirements::TopLevelRequirements::PositionAccuracy": {
+    "id": null,
+    "name": "PositionAccuracy",
+    "description": "GPS position accuracy",
+    "qualified_name": "'Complex Drone System'::Requirements::TopLevelRequirements::PositionAccuracy",
+    "parent": "'Complex Drone System'::Requirements::TopLevelRequirements",
+    "attributes": {
+      "description": "The drone shall maintain position accuracy within 2.5m",
+      "maxError": "2.5",
+      "unit": "m"
+    }
+  },
+  "'Complex Drone System'::Requirements::TopLevelRequirements::VideoTransmissionRange": {
+    "id": null,
+    "name": "VideoTransmissionRange",
+    "description": "Video transmission range requirement",
+    "qualified_name": "'Complex Drone System'::Requirements::TopLevelRequirements::VideoTransmissionRange",
+    "parent": "'Complex Drone System'::Requirements::TopLevelRequirements",
+    "attributes": {
+      "description": "Video transmission shall work up to 1000m range",
+      "minRange": "1000.0",
+      "unit": "m"
+    }
+  },
+  "'Complex Drone System'::Requirements::TopLevelRequirements::ControlRange": {
+    "id": null,
+    "name": "ControlRange",
+    "description": "Control signal range requirement",
+    "qualified_name": "'Complex Drone System'::Requirements::TopLevelRequirements::ControlRange",
+    "parent": "'Complex Drone System'::Requirements::TopLevelRequirements",
+    "attributes": {
+      "description": "Control signals shall work up to 1500m range",
+      "minRange": "1500.0",
+      "unit": "m"
+    }
+  }
+}
