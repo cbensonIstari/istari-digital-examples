@@ -61,6 +61,7 @@ End-to-end walkthroughs showing how engineers use Istari day-to-day. Each includ
 | Use Case | Question It Answers |
 |----------|-------------------|
 | [Explore a SysML Model](use-cases/explore-sysml-model/) | "What's actually in my .sysml file?" — extract requirements, parts, and diagrams |
+| [Run an nTop Wing Design](use-cases/run-ntop-wing-design/) | "I want to run my parametric wing with specific parameters and see the results" |
 
 ## Model Lineage
 
