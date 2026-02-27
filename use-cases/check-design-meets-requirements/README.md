@@ -38,18 +38,18 @@ Three engineers are working on the same aircraft — one on requirements, one on
 ## The New Way (with Istari)
 
 ```
-+--- Outer Loop: Istari -- version - check - compare -------------+
-|                                                                  |
-|  +- SysGit ----------+  +- SysGit ----------+  +- nTop -------+ |
-|  | Requirements      |  | Architecture      |  | CAD Model    | |
-|  | (Engineer A)      |  | (Engineer B)      |  | (Engineer C) | |
-|  +--------+----------+  +--------+----------+  +------+-------+ |
-|           |                      |                     |         |
-|           v                      v                     v         |
-+------------------------------------------------------------------+
-|  Automated checks: requirements <-> architecture <-> CAD         |
-|  --> Compliance report: PASS / FAIL per check                    |
-+------------------------------------------------------------------+
++--- Outer Loop: Istari -- version - check - compare --------+
+|                                                             |
+|  +- SysGit -----------------------+  +- nTop ------------+ |
+|  | Requirements & Architecture    |  | CAD Model         | |
+|  | (Engineers A & B)              |  | (Engineer C)      | |
+|  +--------------+-----------------+  +--------+----------+ |
+|                 |                              |            |
+|                 v                              v            |
++-------------------------------------------------------------+
+|  Automated checks: requirements <-> architecture <-> CAD    |
+|  --> Compliance report: PASS / FAIL per check               |
++-------------------------------------------------------------+
 ```
 
 Everyone works in parallel in their preferred tool. Istari stores everything in one system. **Checks run automatically** — no meetings required to answer "does it line up?"
