@@ -54,6 +54,14 @@ The [`getting-started/`](getting-started/) folder covers SDK patterns that work 
 | [`02_version_model.py`](getting-started/02_version_model.py) | Upload a job output as a new formal revision |
 | [`03_share_resources.py`](getting-started/03_share_resources.py) | Share a system and its files with a teammate by email |
 
+## Use Cases
+
+End-to-end walkthroughs showing how engineers use Istari day-to-day. Each includes a [K-script](https://medium.com/@bladekotelly/k-scripts-the-fastest-and-most-flexible-way-to-articulate-a-user-experience-97264d9c4786) describing the user experience and a working notebook.
+
+| Use Case | Question It Answers |
+|----------|-------------------|
+| [Explore a SysML Model](use-cases/explore-sysml-model/) | "What's actually in my .sysml file?" — extract requirements, parts, and diagrams |
+
 ## Model Lineage
 
 Three nTop runs with different wing parameters, tracked back to a single model with formal versioning:
