@@ -56,16 +56,14 @@ def main():
     print("  System shared.")
 
     # Collect all file IDs from the system's configurations
-    configs = client.list_configurations(args.system_id, page=1, size=50)
+    configs = client.list_system_configurations(args.system_id, page=1, size=50)
     file_ids = set()
 
     for config in configs.items:
-        snapshots = client.list_snapshots(config.id, page=1, size=10)
-        for snap in snapshots.items:
-            items = client.list_snapshot_items(snap.id, page=1, size=100)
-            for item in items.items:
-                if item.file_revision and item.file_revision.file_id:
-                    file_ids.add(item.file_revision.file_id)
+        # Get tracked files directly
+        tracked = client.list_tracked_files(config.id, page=1, size=50)
+        for tf in tracked.items:
+            file_ids.add(tf.file_id)
 
     # Also collect files from model artifacts
     models = client.list_models(system_id=args.system_id, page=1, size=100)

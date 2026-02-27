@@ -19,7 +19,7 @@ def list_systems(client, show_all=False):
     page = client.list_systems(page=1, size=20, archive_status=archive_status)
     print(f"Systems ({page.total} total):\n")
     for system in page.items:
-        print(f"  {system.display_name}")
+        print(f"  {system.name}")
         print(f"    ID: {system.id}")
         if system.description:
             print(f"    Description: {system.description}")
@@ -30,28 +30,30 @@ def list_systems(client, show_all=False):
 def explore_system(client, system_id):
     """Drill into a system: configurations → snapshots → files."""
     system = client.get_system(system_id)
-    print(f"System: {system.display_name}")
+    print(f"System: {system.name}")
     print(f"  ID: {system.id}")
     print(f"  Description: {system.description or '—'}\n")
 
     # List configurations
-    configs = client.list_configurations(system_id, page=1, size=50)
+    configs = client.list_system_configurations(system_id, page=1, size=50)
     print(f"Configurations ({configs.total}):\n")
     for config in configs.items:
-        print(f"  {config.display_name}")
+        print(f"  {config.name}")
         print(f"    Config ID: {config.id}")
 
         # List snapshots for this configuration
-        snapshots = client.list_snapshots(config.id, page=1, size=10)
+        snapshots = client.list_snapshots(configuration_id=config.id, page=1, size=10)
         for snap in snapshots.items:
-            print(f"    Snapshot: {snap.id}")
+            # Show tags if any
+            tags = client.list_tags(snapshot_id=snap.id, page=1, size=10)
+            tag_names = [t.tag for t in tags.items]
+            tag_str = f" [{', '.join(tag_names)}]" if tag_names else ""
+            print(f"    Snapshot: {snap.id[:8]}...{tag_str}")
 
             # List files in this snapshot
-            items = client.list_snapshot_items(snap.id, page=1, size=50)
-            for item in items.items:
-                rev = item.file_revision
-                if rev:
-                    print(f"      - {rev.name} ({rev.size:,} bytes)")
+            revs = client.list_snapshot_revisions(snap.id, page=1, size=50)
+            for rev in revs.items:
+                print(f"      - {rev.name} ({rev.size:,} bytes)")
         print()
 
 
