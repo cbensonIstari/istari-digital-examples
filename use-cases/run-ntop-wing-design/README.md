@@ -82,7 +82,7 @@ Running the default parameters (LOA 99.9", Span 144", LE Sweep 46°/46°, TE Swe
 | Static margin | 2.08% |
 | Overall stability | ✅ All axes stable and damped |
 
-See [`example-output/`](example-output/) for the full JSON files, rendered views, and aerodeck HTML report.
+See [`example-input/`](example-input/) for the parameter JSON and [`example-output/`](example-output/) for the full results.
 
 ### Parameters Reference
 

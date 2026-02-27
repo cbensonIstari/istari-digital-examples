@@ -84,7 +84,7 @@ Running extraction on the Group3 UAS model (`group3_uas_requirements.sysml`, 596
 | Payload System | eoirCamera, thermalCamera, gimbal, gimbalController, lidarSensor, additionalPayloadBay | 30x zoom, 640x512 LWIR, Velodyne Puck Lite |
 | Airframe | centerBody, wing, elevons, winglets, landingGear, avionicsBay | 6061-T6 aluminum, 4.5m wingspan, reflexed airfoil |
 
-See [`example-output/`](example-output/) for the full JSON and PNG files.
+See [`example-input/`](example-input/) for the source SysML file and [`example-output/`](example-output/) for the full JSON and PNG files.
 
 ## Try It
 

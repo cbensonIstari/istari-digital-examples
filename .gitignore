@@ -1,8 +1,10 @@
 # Credentials
 .env
 
-# nTop binary models (too large for git)
+# nTop binary models (too large for regular git)
 *.ntop
+# Allow .ntop files in example-input/ (tracked via Git LFS)
+!**/example-input/*.ntop
 
 # Python
 __pycache__/
