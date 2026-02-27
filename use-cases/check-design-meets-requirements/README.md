@@ -7,30 +7,30 @@ Three engineers are working on the same aircraft — one on requirements, one on
 ## The Old Way
 
 ```
- Requirements          Architecture           CAD Model
- Engineer              Engineer               Engineer
-     │                     │                      │
-     ▼                     │                      │
- Write requirements        │                      │
-     │                     │                      │
-     ├──── handoff ───────►│                      │
-     │                     ▼                      │
-     │              Write architecture            │
-     │                     │                      │
-     │◄── weeks of ───────►│                      │
-     │    meetings         │                      │
-     │                     │                      │
-     ▼                     ▼                      │
- Reqs + Arch aligned       │                      │
-     │                     │                      │
-     ├──────── handoff ────┼─────────────────────►│
-     │                     │                      ▼
-     │                     │               Build CAD model
-     │                     │                      │
-     │◄───── more weeks of meetings ─────────────►│
-     │       three-way alignment                  │
-     ▼                     ▼                      ▼
-              Final alignment (hopefully)
+ Requirements           Architecture            CAD Model
+ Engineer               Engineer                Engineer
+     |                      |                       |
+     v                      |                       |
+ Write requirements         |                       |
+     |                      |                       |
+     +--- handoff --------->|                       |
+     |                      v                       |
+     |               Write architecture             |
+     |                      |                       |
+     |<-- weeks of -------->|                       |
+     |    meetings          |                       |
+     |                      |                       |
+     v                      v                       |
+ Reqs + Arch aligned        |                       |
+     |                      |                       |
+     +-------- handoff -----+---------------------->|
+     |                      |                       v
+     |                      |                Build CAD model
+     |                      |                       |
+     |<----- more weeks of meetings --------------->|
+     |        three-way alignment                   |
+     v                      v                       v
+               Final alignment (hopefully)
 ```
 
 **Problems:** Serial handoffs. Weeks of meetings. No automated checks. Copy-paste engineering. Everyone has their own version of the truth. By the time the CAD engineer hears about a requirement change, he's already three revisions deep.
@@ -38,18 +38,18 @@ Three engineers are working on the same aircraft — one on requirements, one on
 ## The New Way (with Istari)
 
 ```
-┌─── Outer Loop: Istari ── version · check · compare ─────────────┐
-│                                                                   │
-│  ┌─ SysGit ─────────┐  ┌─ SysGit ─────────┐  ┌─ nTop ────────┐ │
-│  │ Requirements      │  │ Architecture     │  │ CAD Model     │ │
-│  │ (Engineer A)      │  │ (Engineer B)     │  │ (Engineer C)  │ │
-│  └────────┬──────────┘  └────────┬─────────┘  └──────┬────────┘ │
-│           │                      │                    │          │
-│           ↓                      ↓                    ↓          │
-├──────────────────────────────────────────────────────────────────┤
-│  Automated checks: requirements ↔ architecture ↔ CAD            │
-│  → Compliance report: PASS / FAIL per check                     │
-└──────────────────────────────────────────────────────────────────┘
++--- Outer Loop: Istari -- version - check - compare -------------+
+|                                                                  |
+|  +- SysGit ----------+  +- SysGit ----------+  +- nTop -------+ |
+|  | Requirements      |  | Architecture      |  | CAD Model    | |
+|  | (Engineer A)      |  | (Engineer B)      |  | (Engineer C) | |
+|  +--------+----------+  +--------+----------+  +------+-------+ |
+|           |                      |                     |         |
+|           v                      v                     v         |
++------------------------------------------------------------------+
+|  Automated checks: requirements <-> architecture <-> CAD         |
+|  --> Compliance report: PASS / FAIL per check                    |
++------------------------------------------------------------------+
 ```
 
 Everyone works in parallel in their preferred tool. Istari stores everything in one system. **Checks run automatically** — no meetings required to answer "does it line up?"
