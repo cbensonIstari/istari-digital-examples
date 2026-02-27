@@ -1,0 +1,42 @@
+[
+  {
+    "requirement": "RangeReq",
+    "check": "Range",
+    "target": 1500.0,
+    "actual": 2312.0,
+    "unit": "nm",
+    "operator": ">=",
+    "status": "PASS",
+    "margin": 54.1
+  },
+  {
+    "requirement": "MaxStructureWeight",
+    "check": "Structure Weight",
+    "target": 275.0,
+    "actual": 321.75,
+    "unit": "lb",
+    "operator": "<=",
+    "status": "FAIL",
+    "margin": -17.0
+  },
+  {
+    "requirement": "CruiseSpeed",
+    "check": "Cruise Speed",
+    "target": 100.0,
+    "actual": 175,
+    "unit": "kts",
+    "operator": ">=",
+    "status": "PASS",
+    "margin": 75.0
+  },
+  {
+    "requirement": "MaxStructureWeight",
+    "check": "Architecture Mass Roll-up",
+    "target": 275.0,
+    "actual": 155.7,
+    "unit": "lb",
+    "operator": "<=",
+    "status": "PASS",
+    "margin": 43.4
+  }
+]

@@ -1,0 +1,183 @@
+{
+  "metadata": {
+    "aircraft_name": "grp3-uas_v6",
+    "generator_version": "1.0.0",
+    "generated_date": "2026-02-26T15:39:26.036061",
+    "metrics_generated": "2026-02-26T15:39:26.036070"
+  },
+  "reference_geometry": {
+    "S_ref_ft2": 49.576,
+    "b_ref_ft": 11.9836,
+    "c_ref_ft": 4.8706,
+    "x_ref_ft": 3.6007,
+    "y_ref_ft": 0.0,
+    "z_ref_ft": 0.2022,
+    "aspect_ratio": 2.897
+  },
+  "mass_properties": {
+    "mass_lbm": 478.99,
+    "wing_loading_lbm_per_ft2": 9.66,
+    "cg_ft": {
+      "x": 3.6007,
+      "y": 0.0,
+      "z": 0.2022
+    },
+    "inertia_lbm_ft2": {
+      "Ixx": 1865.71,
+      "Iyy": 1386.51,
+      "Izz": 3230.37,
+      "Ixy": 2.58,
+      "Ixz": -5.5,
+      "Iyz": 0.05
+    },
+    "fuel_mass_lbm": 157.24,
+    "fuel_fraction": 0.328,
+    "empty_weight_lbm": 321.75
+  },
+  "aerodynamic_performance": {
+    "CL_0": 0.0958,
+    "CD_0": 0.0048,
+    "LD_max": 23.64,
+    "alpha_at_LD_max_deg": 2.0,
+    "oswald_efficiency_estimate": 0.21
+  },
+  "static_stability": {
+    "longitudinal": {
+      "CL_alpha_per_rad": 2.9799,
+      "CL_alpha_per_deg": 0.05201,
+      "Cm_alpha_per_rad": -0.0621,
+      "Cm_alpha_per_deg": -0.001084,
+      "neutral_point_x_ft": 3.7022,
+      "static_margin_percent": 2.08,
+      "is_stable": true
+    },
+    "lateral_directional": {
+      "Cn_beta_per_rad": 0.0523,
+      "Cl_beta_per_rad": -0.0718,
+      "CY_beta_per_rad": -0.1953,
+      "is_directionally_stable": true
+    }
+  },
+  "dynamic_stability": {
+    "pitch_rate": {
+      "CL_q_per_rad": 2.9641,
+      "Cm_q_per_rad": -0.8332,
+      "is_damped": true
+    },
+    "roll_rate": {
+      "Cl_p_per_rad": -0.2488,
+      "Cn_p_per_rad": 0.0134,
+      "is_damped": true
+    },
+    "yaw_rate": {
+      "Cl_r_per_rad": 0.0598,
+      "Cn_r_per_rad": -0.0354,
+      "is_damped": true
+    }
+  },
+  "control_effectiveness": {
+    "elevon": {
+      "CL_de_per_rad": 0.934879,
+      "CL_de_per_deg": 0.016317,
+      "Cm_de_per_rad": -0.324855,
+      "Cm_de_per_deg": -0.00567,
+      "Ch_de": 0.004322,
+      "limits_deg": {
+        "min": -30.0,
+        "max": 30.0
+      }
+    },
+    "aileron": {
+      "Cl_da_per_rad": -0.202987,
+      "Cl_da_per_deg": -0.003543,
+      "Cn_da_per_rad": 0.015376,
+      "Cn_da_per_deg": 0.000268,
+      "Ch_da": 0.005086,
+      "limits_deg": {
+        "min": -30.0,
+        "max": 30.0
+      }
+    }
+  },
+  "elevon_forces": {
+    "reference_velocity_mph": 200,
+    "reference_deflection_deg": 10,
+    "dynamic_pressure_psf": 102.26,
+    "hinge_moment_lb_in": 1280.7,
+    "hinge_moment_Nm": 144.7,
+    "pitch_moment_lb_ft": -1400.0
+  },
+  "range_mission": {
+    "cruise_speed_kts": 175,
+    "propeller_efficiency": 0.8,
+    "SFC_lb_hp_hr": 0.45,
+    "max_LD": 23.6,
+    "range_nm": 2312.0,
+    "cruise_time_hr": 13.2,
+    "loiter_time_hr": 12.0,
+    "total_endurance_hr": 25.5,
+    "mission_segments": [
+      {
+        "segment": "1. Warmup & Taxi",
+        "W_start_lb": 479.0,
+        "W_end_lb": 464.6,
+        "fuel_lb": 14.4,
+        "fuel_fraction": 0.97
+      },
+      {
+        "segment": "2. Takeoff",
+        "W_start_lb": 464.6,
+        "W_end_lb": 457.7,
+        "fuel_lb": 7.0,
+        "fuel_fraction": 0.985
+      },
+      {
+        "segment": "3. Climb",
+        "W_start_lb": 457.7,
+        "W_end_lb": 448.5,
+        "fuel_lb": 9.2,
+        "fuel_fraction": 0.98
+      },
+      {
+        "segment": "4. Cruise",
+        "W_start_lb": 448.5,
+        "W_end_lb": 378.8,
+        "fuel_lb": 69.7,
+        "fuel_fraction": 0.845
+      },
+      {
+        "segment": "5. Loiter (12 hr)",
+        "W_start_lb": 378.8,
+        "W_end_lb": 336.2,
+        "fuel_lb": 42.6,
+        "fuel_fraction": 0.888
+      },
+      {
+        "segment": "6. Descent",
+        "W_start_lb": 336.2,
+        "W_end_lb": 332.9,
+        "fuel_lb": 3.4,
+        "fuel_fraction": 0.99
+      },
+      {
+        "segment": "7. Landing & Taxi",
+        "W_start_lb": 332.9,
+        "W_end_lb": 331.2,
+        "fuel_lb": 1.7,
+        "fuel_fraction": 0.995
+      }
+    ],
+    "reserve_fuel_lb": 9.4,
+    "total_fuel_lb": 157.2,
+    "empty_weight_lb": 321.8,
+    "MTOW_lb": 479.0
+  },
+  "stability_summary": {
+    "pitch_stable": true,
+    "directionally_stable": true,
+    "pitch_damped": true,
+    "roll_damped": true,
+    "yaw_damped": true,
+    "overall_stable": true
+  }
+}

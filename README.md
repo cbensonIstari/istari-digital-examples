@@ -62,6 +62,7 @@ End-to-end walkthroughs showing how engineers use Istari day-to-day. Each includ
 |----------|-------------------|
 | [Understand My Requirements & Architecture](use-cases/explore-sysml-model/) | See what's inside a systems model — without being a SysML expert |
 | [Test a New Wing Shape](use-cases/run-ntop-wing-design/) | Change wing parameters and see how it performs — without spinning up the nTop GUI |
+| [Does My Design Meet Requirements?](use-cases/check-design-meets-requirements/) | Automatically check that requirements, architecture, and CAD all line up |
 
 ## Model Lineage
 
