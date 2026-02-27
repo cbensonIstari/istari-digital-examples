@@ -1,4 +1,4 @@
-# Use Case: Explore a SysML Model
+# Use Case: Understand My Requirements & Architecture — Without Being a SysML Expert
 
 ## Intent
 

@@ -1,4 +1,4 @@
-# Use Case: Run an nTop Wing Design
+# Use Case: Test a New Wing Shape — Without Spinning Up the nTop GUI
 
 ## Intent
 
