@@ -36,6 +36,20 @@ python istari_client.py
 # → Connected as: Your Name (you@example.com)
 ```
 
+## Repo Structure
+
+```
+istari-digital-examples/
+├── use-cases/              ← End-to-end walkthroughs (start here)
+├── getting-started/        ← SDK patterns that work across all tools
+├── ntop/                   ← nTopology integration scripts
+├── sysgit/                 ← SysGit (SysML v2) integration scripts
+├── demos/                  ← Standalone interactive demos (e.g. AIAA)
+├── docs/                   ← Model lineage diagrams
+├── istari_client.py        ← Shared connection helper
+└── CLAUDE.md               ← AI assistant hints (links, IDs, SDK reference)
+```
+
 ## Integrations
 
 | Folder | Model Type | Tool | What It Does |
