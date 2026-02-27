@@ -1,0 +1,23 @@
+# Credentials
+.env
+
+# nTop binary models (too large for git)
+*.ntop
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
