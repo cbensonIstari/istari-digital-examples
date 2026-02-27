@@ -166,6 +166,19 @@ print(format_report(results))
 | `output_requirements_updated.json` | 3 | Re-extracted requirements showing the 325 lb target |
 | `compliance_report_final.md` | 4 | Final compliance check — **all green** |
 
+## Version Control
+
+The notebook snapshots each milestone so you can see the full history of what changed and when:
+
+| # | Tag | Files | What happened |
+|---|-----|-------|---------------|
+| 1 | `initial-upload` / `baseline` | 2 | Raw SysML + nTop models uploaded |
+| 2 | `post-extraction` | ~20 | SysGit + nTop extraction artifacts added |
+| 3 | `initial-checks` | ~20 | Compliance checks run — weight FAILS |
+| 4 | `post-requirement-update` | ~20+ | SysML rev 2 (325 lb) + new extraction artifacts |
+
+This system tracks **two models** in a single configuration — both as LATEST. When either model gets a new revision, the next snapshot automatically picks it up.
+
 ## Try It
 
 Run the notebook: [`check_design.ipynb`](check_design.ipynb)
