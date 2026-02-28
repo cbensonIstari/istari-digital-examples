@@ -422,6 +422,21 @@ When iterating `list_jobs()`, the `.status` shortcut sometimes doesn't behave th
 
 ---
 
+## 24. Istari UI doesn't render Markdown files — no preview for `.md` uploads
+
+**What happened:** We wanted to upload a `README.md` to each Istari system as living documentation — a changelog and status summary that gets updated with each snapshot, like a GitHub repo README. But when you upload a `.md` file, the Istari UI shows the raw Markdown source instead of rendering it.
+
+```
+Expected: rendered headings, tables, bold text, links
+Actual:   raw text with # symbols, | pipes, ** asterisks, [brackets](urls)
+```
+
+We had to switch to uploading `.html` files instead to get readable documentation inside the Istari UI. This works but is much less convenient — HTML is harder to read in raw form, harder to diff between revisions, and engineers are far more comfortable writing Markdown.
+
+**Suggestion:** Add Markdown rendering support to the Istari file viewer. This is a standard feature in every code collaboration tool (GitHub, GitLab, Bitbucket all render `.md` files). Since Istari is a version control system, inline documentation is a natural use case. Even a basic renderer (headings, tables, bold/italic, links, code blocks) would be enough.
+
+---
+
 ## Overall
 
 The SDK does its job well — these are refinements, not blockers. The version control model (system → configuration → snapshot → tag) is genuinely powerful once you understand it. These suggestions would just make it easier for the next person to reach that understanding faster.
