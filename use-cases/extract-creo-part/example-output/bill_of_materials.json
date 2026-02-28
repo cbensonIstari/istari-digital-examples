@@ -1,0 +1,10 @@
+[ {
+  "part_name" : "GEARCASE",
+  "type" : "part",
+  "part_count" : 1,
+  "weight" : 0.0,
+  "mass" : 0.0,
+  "volume" : 0.0,
+  "area" : 0.0,
+  "material" : "PTC_SYSTEM_MTRL_PROPS"
+} ]

@@ -1,0 +1,24 @@
+{
+  "name" : "GEARCASE",
+  "parameters" : [ {
+    "name" : "GEARCASE\\DESCRIPTION",
+    "units" : "null",
+    "value" : ""
+  }, {
+    "name" : "GEARCASE\\MODELED_BY",
+    "units" : "null",
+    "value" : ""
+  }, {
+    "name" : "GEARCASE\\PTC_MASTER_MATERIAL",
+    "units" : "null",
+    "value" : "PTC_SYSTEM_MTRL_PROPS"
+  }, {
+    "name" : "GEARCASE\\PTC_REPORTED_MATERIAL",
+    "units" : "null",
+    "value" : ""
+  }, {
+    "name" : "GEARCASE\\PTC_MATERIAL_NAME",
+    "units" : "null",
+    "value" : ""
+  } ]
+}

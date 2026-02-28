@@ -1,0 +1,44 @@
+[ {
+  "part_name" : "GEARCASE",
+  "bounding_box" : {
+    "min_corner" : {
+      "x" : -42.96042,
+      "y" : -52.0,
+      "z" : -35.03801
+    },
+    "max_corner" : {
+      "x" : 56.132263,
+      "y" : 0.0,
+      "z" : 35.036247
+    },
+    "unit" : "",
+    "dimensions" : {
+      "x" : 99.09268,
+      "y" : 52.0,
+      "z" : 70.07426
+    },
+    "center" : {
+      "x" : 6.5859222,
+      "y" : -26.0,
+      "z" : -8.8119507E-4
+    }
+  },
+  "properties" : {
+    "volume" : {
+      "value" : 0.0,
+      "unit" : "in^3"
+    },
+    "density" : {
+      "value" : 0.0,
+      "unit" : "lbm/in^3"
+    },
+    "mass" : {
+      "value" : 0.0,
+      "unit" : "lbm"
+    },
+    "surface_area" : {
+      "value" : 0.0,
+      "unit" : "in^2"
+    }
+  }
+} ]

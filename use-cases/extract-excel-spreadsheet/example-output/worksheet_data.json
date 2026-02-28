@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Sheet1",
+    "row_count": 1000,
+    "column_count": 6,
+    "headers": null
+  },
+  {
+    "name": "Copy of Sheet1",
+    "row_count": 1000,
+    "column_count": 5,
+    "headers": null
+  }
+]
