@@ -1,0 +1,58 @@
+[
+  {
+    "name": "BRACKET\\HOLE_DIAMETER",
+    "type": "double",
+    "part_name": "BRACKET",
+    "value": 40,
+    "unit": "mm"
+  },
+  {
+    "name": "BRACKET\\KNOTCH_OPENING",
+    "type": "double",
+    "part_name": "BRACKET",
+    "value": 80,
+    "unit": "mm"
+  },
+  {
+    "name": "BRACKET\\FLANGE_THICKNESS",
+    "type": "double",
+    "part_name": "BRACKET",
+    "value": 15,
+    "unit": "mm"
+  },
+  {
+    "name": "BRACKET\\LENGTH_BRACKET",
+    "type": "double",
+    "part_name": "BRACKET",
+    "value": 180,
+    "unit": "mm"
+  },
+  {
+    "name": "BRACKET\\GUSSET_THICKNESS",
+    "type": "double",
+    "part_name": "BRACKET",
+    "value": 25,
+    "unit": "mm"
+  },
+  {
+    "name": "BRACKET\\FORMULA-HOLE_SPACING_WIDTH",
+    "type": "double",
+    "part_name": "BRACKET",
+    "value": 57.5,
+    "unit": "mm"
+  },
+  {
+    "name": "BRACKET\\FORMULA-HOLE_SPACING_LENGTH",
+    "type": "double",
+    "part_name": "BRACKET",
+    "value": 130,
+    "unit": "mm"
+  },
+  {
+    "name": "BRACKET\\BOLT_DIAMETER",
+    "type": "double",
+    "part_name": "BRACKET",
+    "value": 10,
+    "unit": "mm"
+  }
+]

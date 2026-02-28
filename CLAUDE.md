@@ -33,6 +33,8 @@ Each use case has its own Istari system:
 | Explore SysML Model | Example: Explore SysML Model | `c61e33e7-e14d-458e-8c82-7c8148c1a643` |
 | nTop Wing Design | Example: nTop Wing Design | `91cde24e-8343-44ba-8b8f-67dc6e9e5334` |
 | Check Design Meets Requirements | Example: Check Design Meets Requirements | `294568b3-e626-4293-8e2c-307370ec9e95` |
+| Extract CATIA V5 Part | Example: Extract CATIA V5 Part | `55726539-5956-447b-8d46-da67aca7ccbe` |
+| Extract NASTRAN Model | Example: Extract NASTRAN Model | `41455388-982a-4078-ab6a-2e020a44bb98` |
 
 ## Model IDs
 
@@ -41,6 +43,8 @@ Each use case has its own Istari system:
 | Group3 UAS Requirements (Explore) | `85b78395-9c09-4047-ad2a-7e2aa444b389` | Use Case 1 |
 | Group3-UAS-Wing-v8 (nTop) | `263b7332-03f4-4ded-9686-7f11df478058` | Use Case 2, Use Case 3 |
 | Group3 UAS Requirements (Compliance) | `c4280a27-b2e4-4376-81f7-474062bcdf4d` | Use Case 3 |
+| Bracket.CATPart (CATIA V5) | `0e035383-3a51-48fa-8682-29213dda65ab` | Use Case 4 |
+| Aircraft-One_DEMO.bdf (NASTRAN) | `77445b89-a9f2-4e8c-86ac-14962d5f36b3` | Use Case 5 |
 
 ## SDK Quick Reference
 
@@ -159,3 +163,5 @@ Upload model ──→ Track in config ──→ Run job ──→ Snapshot ─�
 |----------|------|----|---------|
 | `@istari:extract_sysmlv2` | `sysgit` v0.1.8 | Ubuntu 22.04 | Parse SysML → JSON + diagrams |
 | `@ntop:run_model` | `ntopcl` v5.30 | RHEL 8 | Run parametric CAD → metrics + views |
+| `@istari:extract` | `dassault_catia_v5` 6R2023 | Windows Server 2022 | Extract CATIA V5 part data → params, mass, views, OBJ |
+| `@istari:extract_input` | `nastran_extract` v1.0.0 | Ubuntu 22.04 | Parse NASTRAN BDF → mesh, materials, loads |

@@ -1,0 +1,46 @@
+[
+  {
+    "part_name": "BRACKET",
+    "bounding_box": {
+      "min_corner": {
+        "x": -135,
+        "y": -135,
+        "z": -45
+      },
+      "max_corner": {
+        "x": 45,
+        "y": -45,
+        "z": 45
+      },
+      "unit": "mm",
+      "dimensions": {
+        "x": 180,
+        "y": 90,
+        "z": 90
+      },
+      "center": {
+        "x": -45,
+        "y": -90,
+        "z": 0
+      }
+    },
+    "properties": {
+      "density": {
+        "value": 2700,
+        "unit": "kg_m3"
+      },
+      "volume": {
+        "value": 3.309,
+        "unit": "e"
+      },
+      "surface_area": {
+        "value": 0.067,
+        "unit": "m2"
+      },
+      "mass": {
+        "value": 0.894,
+        "unit": "kg"
+      }
+    }
+  }
+]
