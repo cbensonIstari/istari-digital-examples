@@ -254,8 +254,178 @@ This works fine for notebooks, but it's not great for production integrations.
 
 ---
 
+## 16. Integration docs list wrong `add_job()` parameters for CATIA V5
+
+**What happened:** The CATIA V5 integration docs at `https://docs.istaridigital.com/integrations/CAD/dassault_catia_v5` show `tool_version="2.4.0"` and `operating_system="Windows 10"`. Using those parameters returns a 404 from the function registry:
+
+```
+NotFoundException: "no function found in registry with name @istari:extract,
+version: any, tool name: dassault_catia_v5, tool version: 2.4.0,
+and operating system: Windows 10, for model with extension: CATPart"
+```
+
+The actual working parameters (discovered by inspecting existing completed jobs) are `tool_version="6R2023"` and `operating_system="Windows Server 2022"`.
+
+**Suggestion:** Keep the integration docs in sync with what's actually registered in the function registry. Even better: auto-generate the docs code examples from the registry so they can't drift.
+
+---
+
+## 17. No API to discover available functions or tools
+
+**What happened:** There's no `list_functions()`, `list_tools()`, or equivalent endpoint. To figure out what tools exist, what versions are available, and what operating systems they support, I had to iterate through `list_jobs()` across multiple pages and inspect the `job.function` object on each one.
+
+```python
+# What I had to do — iterate 450+ jobs to build a tool catalog:
+seen = set()
+for page_num in range(1, 10):
+    jobs = client.list_jobs(page=page_num, size=50)
+    for j in jobs.items:
+        func = j.function
+        if func and func.tool_name not in seen:
+            seen.add(func.tool_name)
+            versions = [v.tool_version for v in func.tool_versions]
+            os_list = [o.name for o in func.operating_systems]
+            print(f"tool={func.tool_name} versions={versions} os={os_list}")
+
+# What I wished existed:
+functions = client.list_functions()  # doesn't exist
+```
+
+**Suggestion:** Add a `list_functions()` or `list_available_tools()` endpoint that returns the function registry catalog — tool names, versions, supported OS, required parameters schema, and supported file extensions. This is critical for programmatic integration — right now you can only discover what's available by examining other people's job history.
+
+---
+
+## 18. Function registry 404 doesn't suggest valid alternatives
+
+**What happened:** When `add_job()` fails because the tool_version or OS doesn't match, the error message says "no function found" but doesn't tell you what *would* work. If I submit `tool_version="2.4.0"` and the registry has `"6R2023"`, the error should say so.
+
+```python
+# The error message:
+#   "no function found in registry with name @istari:extract, version: any,
+#    tool name: dassault_catia_v5, tool version: 2.4.0,
+#    and operating system: Windows 10, for model with extension: CATPart"
+
+# What would be more helpful:
+#   "No function found for dassault_catia_v5 v2.4.0 on Windows 10.
+#    Available: dassault_catia_v5 v6R2023 on Windows 10, Windows 11,
+#    Windows Server 2019, Windows Server 2022"
+```
+
+**Suggestion:** Include available tool versions and OS options in the error response. This turns a dead-end error into a self-correcting one.
+
+---
+
+## 19. `add_model()` doesn't accept `system_id` — models are system-agnostic
+
+**What happened:** When uploading a new file, I expected to call `client.add_model(path=file, system_id=system_id)` to associate the model with a system. But `add_model()` doesn't take a `system_id` — models are free-floating until linked to a system via a configuration's tracked files.
+
+```python
+# What I expected:
+model = client.add_model(path="Bracket.CATPart", system_id=SYSTEM_ID)
+
+# What actually works:
+model = client.add_model(path="Bracket.CATPart")
+# Then link it through a configuration:
+client.create_configuration(SYSTEM_ID, NewSystemConfiguration(
+    name="Baseline",
+    tracked_files=[NewTrackedFile(
+        specifier_type=TrackedFileSpecifierType.LATEST,
+        file_id=model.file.id,
+    )]
+))
+```
+
+This is a deliberate design choice (models can appear in multiple systems), but it's surprising. The mental model most engineers have is "upload file *to* a project."
+
+**Suggestion:** Either add an optional `system_id` parameter that auto-creates a tracked file, or prominently document that models must be linked through configurations. A "Getting Started" tutorial showing the full upload → track → extract flow would prevent this confusion.
+
+---
+
+## 20. `NewSystemConfiguration` requires tracked files at creation — can't add them after
+
+**What happened:** I tried to create an empty configuration and then add tracked files to it separately. The API rejected the empty configuration with a `BadRequestException`.
+
+```python
+# Fails — "Configuration must have at least one tracked file":
+config = client.create_configuration(SYSTEM_ID, NewSystemConfiguration(name="Baseline"))
+client.add_tracked_file(config.id, ...)  # never gets here
+
+# What works — must include tracked_files in the constructor:
+config = client.create_configuration(SYSTEM_ID, NewSystemConfiguration(
+    name="Baseline",
+    tracked_files=[NewTrackedFile(...)]
+))
+```
+
+**Suggestion:** Either allow empty configurations (useful for setting up structure before models are ready) or document this constraint clearly. The error message is good — "must have at least one tracked file" — but it's surprising that you can't build up a configuration incrementally.
+
+---
+
+## 21. System auto-creates "baseline" tag — `create_tag("baseline")` fails
+
+**What happened:** When creating a configuration with tracked files, Istari automatically creates a snapshot and tags it "baseline." When I then tried to add a "baseline" tag myself (standard setup pattern), it failed with `BadRequestException: "tag baseline already exists in the system"`.
+
+```python
+# This sequence fails at the last line:
+config = client.create_configuration(SYSTEM_ID, NewSystemConfiguration(
+    name="Baseline",
+    tracked_files=[NewTrackedFile(...)]
+))
+snaps = client.list_snapshots(configuration_id=config.id, page=1, size=1)
+snap_id = snaps.items[0].id
+client.create_tag(snap_id, NewSnapshotTag(tag="baseline"))  # Fails! Already exists
+
+# But adding a different tag works fine:
+client.create_tag(snap_id, NewSnapshotTag(tag="initial-upload"))  # OK
+```
+
+The auto-creation of "baseline" is nice, but it's not documented. I only discovered it by hitting the error.
+
+**Suggestion:** Document that creating a configuration auto-creates a snapshot tagged "baseline." Alternatively, make tag creation idempotent — if the tag already exists on the same snapshot, return it instead of erroring.
+
+---
+
+## 22. NASTRAN integration docs are missing
+
+**What happened:** The CATIA V5 integration has a dedicated docs page at `/integrations/CAD/dassault_catia_v5`. I tried every URL variant for NASTRAN and all returned 404:
+
+```
+https://docs.istaridigital.com/integrations/FEM_Simulation/nastran          → 404
+https://docs.istaridigital.com/integrations/FEM_Simulation/msc_nastran      → 404
+https://docs.istaridigital.com/integrations/FEM_Simulation/nastran_extract  → 404
+```
+
+The only way to discover NASTRAN extraction parameters was by inspecting existing jobs on the platform.
+
+**Suggestion:** Add integration docs pages for all supported tools. The `supported-integrations` page lists NASTRAN as a supported tool, but there's no corresponding detail page with code examples or parameter documentation.
+
+---
+
+## 23. `job.status` vs `job.status_history` — two ways to get status
+
+**What happened:** `get_job()` returns a job with both a `.status` property (direct access) and a `.status_history` list. But the shapes are slightly different — `.status.name` is a `JobStatusName` enum, while `.status_history[-1].name` is also a `JobStatusName` but the container object has different fields.
+
+```python
+# Two ways to get the same status:
+job = client.get_job(job_id)
+
+# Method 1 (from list_jobs context, .status doesn't always exist):
+status = job.status_history[-1].name.value  # "Completed"
+
+# Method 2 (from get_job context):
+status = job.status.name.value  # "Completed"
+```
+
+When iterating `list_jobs()`, the `.status` shortcut sometimes doesn't behave the same as accessing `status_history` directly. This led to subtle bugs when I switched between the two access patterns.
+
+**Suggestion:** Pick one canonical way to access job status and make it consistent across `get_job()` and `list_jobs()`. A simple `job.current_status` property that always returns the latest `JobStatusName` would eliminate this confusion.
+
+---
+
 ## Overall
 
 The SDK does its job well — these are refinements, not blockers. The version control model (system → configuration → snapshot → tag) is genuinely powerful once you understand it. These suggestions would just make it easier for the next person to reach that understanding faster.
+
+The biggest gap we found building UC4 and UC5 was **discoverability of tool parameters**. Without a `list_functions()` endpoint or accurate docs, the only way to find valid `tool_name` / `tool_version` / `operating_system` combinations is to dig through other people's job history. Adding a tool catalog endpoint would be the single highest-impact improvement.
 
 Thanks for building this!
